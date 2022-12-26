@@ -22,6 +22,11 @@ export default SideBarCmp;
 
 const SideBarContainer = styled.div`
   background-color: var(--slack-color);
+  color: white;
+  flex: 0.3;
+  border-top: 1px #49274b solid;
+  max-width: 260px;
+  margin-top: 60px;
 `;
 
 const SidebarHeader = styled.div``;
