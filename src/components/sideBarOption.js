@@ -3,19 +3,19 @@ import styled from "styled-components";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
-
-
-
 import {db}  from '../firebase' 
-
+import {useCollection } from 'react-firebase-hooks'
 
 function SideBarOption({ Icon, title, addChannelOption }) {
+
+    const [ channels, loading, error] = useCollection(db.collection('rooms'))
+
+
   const addChannel = (channel) => {
-    const ChannelName = prompt("please enter a name for the channel");
-    if (ChannelName) {
+    const channelName = prompt("please enter a name for the channel");
+    if (channelName) {
       db.collection("rooms").add({
-        name: ChannelName,
+        name: channelName,
       });
     }
   };
@@ -24,7 +24,7 @@ function SideBarOption({ Icon, title, addChannelOption }) {
 
   return (
     <SideBarOptionContainer
-    //   onClick={addChannelOption ? addChannel : selectChannel}
+      onClick={addChannelOption ? addChannel : selectChannel}
     >
       {Icon && <Icon fontSize="large" style={{ padding: 10 }} />}
       {Icon ? (
