@@ -4,11 +4,13 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import {db}  from '../firebase' 
-import {useCollection } from 'react-firebase-hooks'
+// import { useCollection } from "react-firebase-hooks";
+// import {useAuthState} from 'react-firebase-hooks';
+// import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 function SideBarOption({ Icon, title, addChannelOption }) {
 
-    const [ channels, loading, error] = useCollection(db.collection('rooms'))
+    // const [ channels, loading, error] = useCollection(db.collection('rooms'))
 
 
   const addChannel = (channel) => {
@@ -60,4 +62,8 @@ const SideBarOptionContainer = styled.div`
   }
 `;
 
-const SideBarOptionChannel = styled.div``;
+const SideBarOptionChannel = styled.h3`
+font-weight: 300;
+padding: 10px 0;
+
+`;
